@@ -19,7 +19,7 @@ function App() {
       let sauceData;
       try {
         const url = "https://api.airtable.com/v0/app4Kq78nyR93DHLC/hot%20sauces?filterByFormula=NOT({Average+Rating}+%3D+%27%27)&api_key=";
-        const APP_KEY = "keyjRGeqc5QA99Q5v";
+        const APP_KEY = "API Key";
         const response = await fetch(url + APP_KEY);        
         // const url = "https://randomuser.me/api/?results=10";
         // const response = await fetch(url);
