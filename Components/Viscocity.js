@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 
 function Viscocity() {
     return (
-        <Form>
             <div className="container-fluid">
             <h2>Viscocity</h2>
           {['radio'].map((type) => (
@@ -46,7 +45,6 @@ function Viscocity() {
             </div>
           ))}
           </div>
-        </Form>
       );
 }
 

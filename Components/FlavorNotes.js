@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 
 function FlavorNotes() {
     return (
-        <Form>
             <div className="container-fluid">
             <h2>Flavor Notes</h2>
           {['checkbox'].map((type) => (
@@ -118,7 +117,6 @@ function FlavorNotes() {
             </div>
           ))}
           </div>
-        </Form>
       );
 }
 

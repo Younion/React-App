@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 
 function Spiciness() {
     return (
-        <Form>
             <div className="container-fluid">
             <h2>Spiciness Rating</h2>
             <p> 1-2: Suitable for people with very low spice tolerance<br />
@@ -86,7 +85,6 @@ function Spiciness() {
             </div>
           ))}
           </div>
-        </Form>
       );
 }
 

@@ -1,14 +1,12 @@
-
-import React, { Component } from 'react'  
 import Carousel from 'react-bootstrap/Carousel'
 
 const SauceCarousel = ({ sauceData }) => {  
 
-    return (  
+    return (
       <div className='container-fluid' >  
-      <Carousel>  
+      <Carousel>
       <Carousel.Item style={{'height':"300px"}} >  
-      {sauceData.fields.Name}
+      {/* {sauceData.fields.Name} */}
         <Carousel.Caption>  
           <h3>First Demo </h3>  
             </Carousel.Caption>  
@@ -25,8 +23,7 @@ const SauceCarousel = ({ sauceData }) => {
                     </Carousel.Item>  
                   </Carousel>  
         </div>
-        )  
-  
+      )  
     }  
-      
-    export default SauceCarousel  
+    
+export default SauceCarousel  

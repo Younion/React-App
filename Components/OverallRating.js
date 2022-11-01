@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 
 function OverallRating() {
     return (
-        <Form>
             <div className="container-fluid">
             <h2>Overall Rating</h2>
           {['radio'].map((type) => (
@@ -45,8 +44,6 @@ function OverallRating() {
             </div>
           ))}
           </div>
-        </Form>
-
     );
 }
 

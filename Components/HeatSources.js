@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 
 function HeatSources() {
     return (
-        <Form>
             <div className="container-fluid">
             <h2>Heat Sources</h2>
           {['checkbox'].map((type) => (
@@ -130,7 +129,6 @@ function HeatSources() {
             </div>
           ))}
           </div>
-        </Form>
       );
 }
 

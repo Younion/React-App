@@ -10,8 +10,8 @@ function TitleSection() {
                     <Button variant="btn btn-outline-dark btn-lg download-button">Review a Sauce</Button>
                     <Button variant="btn btn-outline-dark btn-lg download-button">Add a Sauce</Button>
                     </>
-                <div className="col-lg-6 col-md-12">
-                    <img className="title-image fluid" src="breathingfire.png" alt="fire-breathing-chicken"></img>
+                <div className="col-lg-6">
+                    <img className="title-image" src="breathingfire.png" alt="fire-breathing-chicken"></img>
                 </div>
                 </div>
             </div>

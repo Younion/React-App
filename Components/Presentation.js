@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 
 function Presentation() {
     return (
-        <Form>
             <div className="container-fluid">
             <h2>Presentation</h2>
             {['radio'].map((type) => (
@@ -45,8 +44,6 @@ function Presentation() {
               </div>
           ))}
           </div>
-        </Form>
-
     );
 }
 
