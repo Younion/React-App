@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import SauceCard from "./Components/SauceCard";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SauceCard from "./Components/SauceCard";
 import ReviewForm from "./Components/ReviewForm";
 import CallToAction from "./Components/CallToAction";
 import SauceCarousel from "./Components/SauceCarousel";
@@ -18,11 +18,9 @@ function App() {
     (async () => {
       let sauceData;
       try {
-        const url = "https://api.airtable.com/v0/app4Kq78nyR93DHLC/hot%20sauces?filterByFormula=NOT({Average+Rating}+%3D+%27%27)&api_key=";
+        const url = "endpoint";
         const APP_KEY = "API Key";
-        const response = await fetch(url + APP_KEY);        
-        // const url = "https://randomuser.me/api/?results=10";
-        // const response = await fetch(url);
+        const response = await fetch(url + APP_KEY);
         sauceData = await response.json();
       } catch (error) {
         console.log(error);
@@ -58,7 +56,6 @@ function App() {
       <div className="searchBar">
       <input className="search" placeholder="Search..." onInput={filterCards}/>
       </div>
-      {/* <SauceCarousel sauceData={sauces} /> */}
       <div className="cards-container">
       {sauces.map((sauce, index) => (
         <SauceCard key={sauce.id} sauceData={sauce} />
