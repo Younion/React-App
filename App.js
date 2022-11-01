@@ -48,7 +48,7 @@ function App() {
     <div className="App">
       <NavBar />
       <TitleSection />
-      <SauceCarousel />
+      <SauceCarousel sauceData={sauces} />
       <CallToAction />
       <div className="container-fluid" id="cta">
         <h1>Hot Sauce Reviews</h1>
