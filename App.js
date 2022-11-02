@@ -11,24 +11,24 @@ import AddForm from "./Components/AddForm";
 import Footer from "./Components/Footer";
 
 function App() {
-  const [sauces, setData] = useState([]);
+  const [sauces, setSauces] = useState([]);
   const [allSauces, setAllUsers] = useState([]);
 
   useEffect(() => {
     (async () => {
       let sauceData;
       try {
-        const url = "endpoint";
-        const APP_KEY = "API Key";
-        const response = await fetch(url + APP_KEY);
+        const url = "https://api.airtable.com/v0/app4Kq78nyR93DHLC/hot%20sauces?filterByFormula=NOT({Average+Rating}+%3D+%27%27)&api_key=";
+        const REACT_APP_API_KEY = "keyjRGeqc5QA99Q5v";
+        const response = await fetch(url + REACT_APP_API_KEY);        
         sauceData = await response.json();
       } catch (error) {
         console.log(error);
         sauceData = [];
       }
-      setData(sauceData.records);
+      setSauces(sauceData.records);
       setAllUsers(sauceData.records);
-      console.log(sauceData.records);
+      console.log(sauceData.records)
     })();
   }, []);
  
@@ -41,14 +41,14 @@ function App() {
       ${"Spiciness Rating: " + Math.round(sauces.fields['Spiciness Dots'])} 
       ${"Percent Loved: " + Math.round(sauces.fields['Percent Loved'])*100 + "%"}`
       .toLowerCase().includes(value)));
-      setData(filteredData);
+      setSauces(filteredData);
   }
 
   return (
     <div className="App">
       <NavBar />
       <TitleSection />
-      <SauceCarousel sauceData={sauces} />
+      <SauceCarousel sauceData={sauces}/>
       <CallToAction />
       <div className="container-fluid" id="cta">
         <h1>Hot Sauce Reviews</h1>
