@@ -16,8 +16,8 @@ function App() {
   const [allSauces, setAllUsers] = useState([]);
 
   useEffect(() => {
-      const url = "https://api.airtable.com/v0/app4Kq78nyR93DHLC/hot%20sauces?filterByFormula=NOT({Average+Rating}+%3D+%27%27)&api_key=";
-      const REACT_APP_API_KEY = "keyjRGeqc5QA99Q5v";
+      const url = "endpoint";
+      const REACT_APP_API_KEY = "key";
       fetch(url + REACT_APP_API_KEY)
         .then(response => {
           return response.json();
