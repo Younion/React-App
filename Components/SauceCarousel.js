@@ -1,29 +1,27 @@
-import Carousel from 'react-bootstrap/Carousel'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 
-const SauceCarousel = ({ sauceData }) => {  
-
+const SauceCarousel = ({ sauceName }) => {  
     return (
-      <div className='container-fluid' >  
-      <Carousel>
-      <Carousel.Item style={{'height':"300px"}} >  
-        <Carousel.Caption>  
-          {sauceData.map((records) => (
-              <h3>{records.Name}</h3> 
-            ))}
-            </Carousel.Caption>  
-            </Carousel.Item  >  
-            <Carousel.Item style={{'height':"300px"}}>  
-                  <Carousel.Caption>  
-              <h3>Second Demo</h3>  
-                </Carousel.Caption>  
-                    </Carousel.Item>  
-                  <Carousel.Item style={{'height':"300px"}}>  
-                  <Carousel.Caption>  
-                    <h3>Third Demo</h3>  
-                    </Carousel.Caption>  
-                    </Carousel.Item>  
-                  </Carousel>  
-        </div>
+
+      <div className='container-fluid'>  
+    <>
+      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <SwiperSlide><h3>{sauceName.Name}</h3></SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide>Slide 5</SwiperSlide>
+        <SwiperSlide>Slide 6</SwiperSlide>
+        <SwiperSlide>Slide 7</SwiperSlide>
+        <SwiperSlide>Slide 8</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+      </Swiper>
+    </>
+
+      </div>
       )  
     }  
     
