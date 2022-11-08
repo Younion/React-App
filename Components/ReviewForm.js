@@ -40,17 +40,44 @@ function ReviewForm() {
   const handleSubmit = (e) => {
       e.preventDefault();
       const formSubmit = {
-         sauce,
-         presentation,
-         viscocity,
-         spiciness,
-         flavor,
-         overall,
-         loved,
-         notes
-        };
+          "fields": {
+            // "Hot Sauce Name": sauce,
+            "Presentation": presentation,
+            "Viscosity": viscocity,
+            "Spiciness Rating": spiciness,
+            "Flavor Notes": flavor,
+            "Overall Rating": overall,
+            "Loved It?": loved,
+            "Taster Notes": notes
+          }
+        }
 
-      console.log(formSubmit);
+        var Airtable = require('airtable');
+        var base = new Airtable({apiKey: 'key5DK4VYamAJtEoK'}).base('app4Kq78nyR93DHLC');
+
+        base('Tasting Form').create([formSubmit
+        ], { typecast: true }, function(err, records) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          records.forEach(function (record) {
+            console.log(record.getId());
+          });
+        });
+
+      //   fetch('https://api.airtable.com/v0/app4Kq78nyR93DHLC/Tasting%20Form', {
+      //     Authorization: "key5DK4VYamAJtEoK",
+      //     method: 'POST',
+      //     headers: { 
+      //       "Content-Type": "application/json"
+      //     },
+      //     body: JSON.stringify(formSubmit)
+      //   })
+      //   .then(() => {
+      //     // console.log("Post successful")
+      //   })
+      // console.log(formSubmit);
   }
 
   return (

@@ -32,20 +32,35 @@ function AddForm() {
   const handleSubmit = (e) => {
       e.preventDefault();
       const formSubmit = {
-        manufacturer,
-        sauce,
-        location,
-        heat
-      };
+        "fields": {
+          "Manufacturer": manufacturer,
+          "Sauce Name": sauce,
+          "Location": location,
+          "Heat Sources": heat
+        }
+      }
 
-      console.log(formSubmit);
+      var Airtable = require('airtable');
+      var base = new Airtable({apiKey: 'key5DK4VYamAJtEoK'}).base('app4Kq78nyR93DHLC');
 
+      base('Hot Sauces').create([formSubmit
+      ], { typecast: true }, function(err, records) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        records.forEach(function (record) {
+          console.log(record.getId());
+        });
+      });
+      console.log(formSubmit)
     }
 
     const handleDropDown = (e) => {
       setLocation(e)
   
     };
+  
 
   return (
     <form onSubmit={handleSubmit}>
