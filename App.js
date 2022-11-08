@@ -28,7 +28,7 @@ function App() {
           setAllSauces(sauceData.records)
           setNames(sauceData.records)
         });
-      })
+      }, [])
  
   const filterCards = event => {
     const value = event.target.value.toLowerCase();
