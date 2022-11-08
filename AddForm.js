@@ -41,7 +41,7 @@ function AddForm() {
       }
 
       var Airtable = require('airtable');
-      var base = new Airtable({apiKey: 'key5DK4VYamAJtEoK'}).base('app4Kq78nyR93DHLC');
+      var base = new Airtable({apiKey: 'key'}).base('base');
 
       base('Hot Sauces').create([formSubmit
       ], { typecast: true }, function(err, records) {
