@@ -17,8 +17,8 @@ function App() {
   const [allSauces, setAllSauces] = useState([]);
 
   useEffect(() => {
-      const url = "endpoint";
-      const REACT_APP_API_KEY = "key";
+      const url = "https://api.airtable.com/v0/app4Kq78nyR93DHLC/hot%20sauces?filterByFormula=NOT({Average+Rating}+%3D+%27%27)&api_key=";
+      const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY
       fetch(url + REACT_APP_API_KEY)
         .then(response => {
           return response.json();
@@ -28,7 +28,7 @@ function App() {
           setAllSauces(sauceData.records)
           setNames(sauceData.records)
         });
-      }, [])
+      }, []);
  
   const filterCards = event => {
     const value = event.target.value.toLowerCase();
@@ -42,11 +42,13 @@ function App() {
       setSauces(filteredData);
   }
 
+  console.log(names)
+
   return (
     <div className="App">
       <NavBar />
       <TitleSection />
-      <SauceCarousel key={names.id} sauceName={names.Name} />
+      <SauceCarousel sauceName={names} />
       <CallToAction />
       <div className="container-fluid" id="cta">
         <h1>Hot Sauce Reviews</h1>
