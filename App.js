@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
       const url = "https://api.airtable.com/v0/app4Kq78nyR93DHLC/hot%20sauces?filterByFormula=NOT({Average+Rating}+%3D+%27%27)&api_key=";
-      const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY
+      const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
       fetch(url + REACT_APP_API_KEY)
         .then(response => {
           return response.json();
@@ -41,9 +41,7 @@ function App() {
       .toLowerCase().includes(value)));
       setSauces(filteredData);
   }
-
-  console.log(names)
-
+  
   return (
     <div className="App">
       <NavBar />
@@ -55,6 +53,13 @@ function App() {
       </div>
       <div className="searchBar">
       <input className="search" placeholder="Search..." onInput={filterCards}/>
+      <div className="list">
+      Search Tips:
+      <ul>
+        <li key="1">Search by Average Rating by typing "Average Rating: [some number here 1-5]"</li>
+        <li key="2">Search by Spiciness Rating by typing "Spiciness Rating: [some number here 1-10]"</li>
+      </ul>
+      </div>
       </div>
       <div className="cards-container">
       {sauces.map(sauce => 
