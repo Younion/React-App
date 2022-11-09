@@ -13,12 +13,13 @@ const SauceCarousel = ({ sauceName }) => {
           {sauceName.map(items => (
             <Carousel.Item key={items.id}>
             <Carousel.Caption>
-              <h3>{items.fields.Name}</h3>
+              <h3>{items.Name}</h3>
+              <p>{items['Average Rating']}</p>
             </Carousel.Caption>
           </Carousel.Item>
           ))}
         </Carousel>
-        
+
       </div>
       )  
     }  
