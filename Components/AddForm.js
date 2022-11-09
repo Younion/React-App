@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
-
 // import Manufacturer from "./Manufacturer";
 // import SauceName from "./SauceName";
 // import ManufacturerLocation from "./ManufacturerLocation";
@@ -41,7 +40,7 @@ function AddForm() {
       }
 
       var Airtable = require('airtable');
-      var base = new Airtable({apiKey: 'key'}).base('base');
+      var base = new Airtable({apiKey: process.env.REACT_APP_API_KEY}).base(process.env.REACT_APP_BASE);
 
       base('Hot Sauces').create([formSubmit
       ], { typecast: true }, function(err, records) {

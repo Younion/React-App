@@ -53,7 +53,7 @@ function ReviewForm() {
         }
 
         var Airtable = require('airtable');
-        var base = new Airtable({apiKey: 'key'}).base('base');
+        var base = new Airtable({apiKey: process.env.REACT_APP_API_KEY}).base(process.env.REACT_APP_BASE);
 
         base('Tasting Form').create([formSubmit
         ], { typecast: true }, function(err, records) {
@@ -65,6 +65,19 @@ function ReviewForm() {
             console.log(record.getId());
           });
         });
+
+      //   fetch('https://api.airtable.com/v0/app4Kq78nyR93DHLC/Tasting%20Form', {
+      //     Authorization: "key5DK4VYamAJtEoK",
+      //     method: 'POST',
+      //     headers: { 
+      //       "Content-Type": "application/json"
+      //     },
+      //     body: JSON.stringify(formSubmit)
+      //   })
+      //   .then(() => {
+      //     // console.log("Post successful")
+      //   })
+      // console.log(formSubmit);
   }
 
   return (
