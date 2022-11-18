@@ -15,21 +15,62 @@ function App() {
   const [sauces, setSauces] = useState([]);
   const [names, setNames] = useState([]);
   const [allSauces, setAllSauces] = useState([]);
+  const [apiData, setApiData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+// Postgres Connection
   useEffect(() => {
-      const url = "https://api.airtable.com/v0/app4Kq78nyR93DHLC/hot%20sauces?filterByFormula=NOT({Average+Rating}+%3D+%27%27)&api_key=";
-      const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
-      fetch(url + REACT_APP_API_KEY)
-        .then(response => {
-          return response.json();
-        })
-        .then(sauceData => {
-          setSauces(sauceData.records)
-          setAllSauces(sauceData.records)
-          setNames(sauceData.records)
-        });
-      }, []);
+    const getAPI = () => {
+        const API = 'http://jyh:3000';
+        fetch(API)
+            .then((response) => {
+                // console.log(response);
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                setLoading(false);
+                setApiData(data);
+            });
+    };
+    getAPI();
+}, []);
+
+// Airtable API
+  // useEffect(() => {
+  //     const url = "https://api.airtable.com/v0/app4Kq78nyR93DHLC/hot%20sauces?filterByFormula=NOT({Average+Rating}+%3D+%27%27)&api_key=";
+  //     const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
+  //     fetch(url + REACT_APP_API_KEY)
+  //       .then(response => {
+  //         return response.json();
+  //       })
+  //       .then(sauceData => {
+  //         setSauces(sauceData.records)
+  //         setAllSauces(sauceData.records)
+  //         setNames(sauceData.records)
+  //       });
+  //     }, []);
  
+// Intersection Observer
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle("show", entry.isIntersecting)
+  })
+},
+{
+  threshold: .25,
+}
+);
+
+cards.forEach(cards => {
+  observer.observe(cards)
+})
+
+
+// Filter Cards
   const filterCards = event => {
     const value = event.target.value.toLowerCase();
     const filteredData = allSauces.filter(
@@ -42,11 +83,12 @@ function App() {
       setSauces(filteredData);
   }
   
+// Render Page
   return (
     <div className="App">
       <NavBar />
       <TitleSection />
-      <SauceCarousel sauceName={names} />
+      <SauceCarousel sauceName={apiData} />
       <CallToAction />
       <div className="container-fluid" id="cta">
         <h1>Hot Sauce Reviews</h1>
@@ -62,8 +104,8 @@ function App() {
       </div>
       </div>
       <div className="cards-container">
-      {sauces.map(sauce => 
-        <SauceCard key={sauce.id} sauceData={sauce.fields} />
+      {apiData.map(sauce => 
+        <SauceCard key={sauce.hot_sauces_id} sauceData={sauce} />
       )}
       </div>
       <ReviewForm />
